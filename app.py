@@ -70,7 +70,7 @@ def get_conversation_chain(vectorstore):
     chain_prompt = PromptTemplate.from_template(template)
     conversation_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
-        chain_type="map_reduce"
+        chain_type="map-rerank"
         retriever=vectorstore.as_retriever(),
         memory=memory,
         combine_docs_chain_kwargs={"prompt": chain_prompt}
